@@ -2,7 +2,7 @@ from .common import InfoExtractor
 
 
 class JavbobsIE(InfoExtractor):
-    _VALID_URL = r'https?://www.javbobs.com/(?P<id>.+)/'
+    _VALID_URL = r'https?://www.javdob.com/(?P<id>.+)/'
     _TESTS = []
 
     def _real_extract(self, url):
@@ -17,12 +17,12 @@ class JavbobsIE(InfoExtractor):
             'iframe_url')
         iframe_page = self._download_webpage_handle(iframe_url, video_id, headers={
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:122.0) Gecko/20100101 Firefox/122.0',
-            'Referer': 'https://www.javbobs.com/'
+            'Referer': 'https://www.javdob.com/'
         })[0]
         source_url = self._html_search_regex(r'source: "(.*?)",', iframe_page, 'url')
         source_text = self._download_webpage_handle(source_url, video_id, headers={
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:122.0) Gecko/20100101 Firefox/122.0',
-            'Referer': 'https://www.javbobs.com/'
+            'Referer': 'https://www.javdob.com/'
         })[0]
         source = self._html_search_regex(r'(https?://.+)', source_text, 'source')
 
